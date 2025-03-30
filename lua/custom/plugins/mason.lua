@@ -12,6 +12,42 @@ local on_attach = function(client, bufnr)
   vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
 end
 
+local setupAngular = function(lspconfig)
+  local ok, mason_registry = pcall(require, "mason-registry")
+  if not ok then
+    vim.notify("mason-registry could not be loaded")
+    return
+  end
+
+  local angularls_path = mason_registry.get_package("angular-language-server"):get_install_path()
+
+  local cmd = {
+    "ngserver",
+    "--stdio",
+    "--tsProbeLocations",
+    table.concat({
+      angularls_path,
+      vim.uv.cwd(),
+    }, ","),
+    "--ngProbeLocations",
+    table.concat({
+      angularls_path .. "/node_modules/@angular/language-server",
+      vim.uv.cwd(),
+    }, ","),
+  }
+
+  local config = {
+    on_attach = on_attach,
+    cmd = cmd,
+    capabilities = require("cmp_nvim_lsp").default_capabilities(),
+    on_new_config = function(new_config, new_root_dir)
+      new_config.cmd = cmd
+    end,
+  }
+
+  lspconfig.angularls.setup(config)
+end
+
 return {
   { "williamboman/mason.nvim", config = true },
 
@@ -23,6 +59,9 @@ return {
         ensure_installed = {
           "lua_ls",
           "ts_ls",
+          "angularls",
+          "cssls",
+          "cssmodules_ls",
         },
         automatic_installation = true,
       })
@@ -63,7 +102,41 @@ return {
         cmd = { "typescript-language-server", "--stdio" },
         filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
         root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
+        capabilities = require("cmp_nvim_lsp").default_capabilities(),
+        settings = {
+          typescript = {
+            format = {
+              insertSpaceBeforeFunctionParenthesis = true,
+              tabSize = 4,
+              indentSize = 4,
+            },
+          },
+        },
+        javascript = {
+          format = {
+            insertSpaceBeforeFunctionParenthesis = true,
+            tabSize = 4,
+            indentSize = 4,
+          },
+        },
       })
+
+      lspconfig.cssls.setup({
+        on_attach = on_attach,
+        capabilities = require("cmp_nvim_lsp").default_capabilities(),
+        settings = {
+          css = { validate = true },
+          scss = { validate = true },
+          less = { validate = true },
+        },
+      })
+
+      lspconfig.cssmodules_ls.setup({
+        on_attach = on_attach,
+        capabilities = require("cmp_nvim_lsp").default_capabilities(),
+      })
+
+      setupAngular(lspconfig)
 
       -- Cleanup keymap
       vim.keymap.set("n", "<leader>ll", function()
