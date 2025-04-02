@@ -100,7 +100,14 @@ return {
       lspconfig.ts_ls.setup({
         on_attach = on_attach,
         cmd = { "typescript-language-server", "--stdio" },
-        filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+        filetypes = {
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact",
+          "html",
+          "scss",
+        },
         root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
         capabilities = require("cmp_nvim_lsp").default_capabilities(),
         settings = {
