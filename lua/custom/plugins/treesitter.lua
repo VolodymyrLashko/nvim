@@ -20,8 +20,7 @@ return {
       ensure_installed = { "javascript", "lua", "angular" },
       highlight = {
         enable = true,
-      },
-	  autotag = {enable = true}
+      }
     })
   end,
 }

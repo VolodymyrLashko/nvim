@@ -62,6 +62,7 @@ return {
           "angularls",
           "cssls",
           "cssmodules_ls",
+          "html",
         },
         automatic_installation = true,
       })
@@ -105,7 +106,6 @@ return {
           "javascriptreact",
           "typescript",
           "typescriptreact",
-          "html",
           "scss",
         },
         root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
@@ -139,6 +139,11 @@ return {
       })
 
       lspconfig.cssmodules_ls.setup({
+        on_attach = on_attach,
+        capabilities = require("cmp_nvim_lsp").default_capabilities(),
+      })
+
+      lspconfig.html.setup({
         on_attach = on_attach,
         capabilities = require("cmp_nvim_lsp").default_capabilities(),
       })
