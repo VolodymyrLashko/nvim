@@ -63,6 +63,7 @@ return {
           "cssls",
           "cssmodules_ls",
           "html",
+          "tailwindcss",
         },
         automatic_installation = true,
       })
@@ -146,6 +147,33 @@ return {
       lspconfig.html.setup({
         on_attach = on_attach,
         capabilities = require("cmp_nvim_lsp").default_capabilities(),
+      })
+
+      lspconfig.tailwindcss.setup({
+        on_attach = on_attach,
+        capabilities = require("cmp_nvim_lsp").default_capabilities(),
+        filetypes = {
+          "html",
+          "css",
+          "javascript",
+          "javascriptreact",
+          "typescriptreact",
+          "vue",
+          "svelte",
+          "typescript", -- Include TypeScript for inline templates
+          "typescriptreact", -- In case Angular uses TSX-style inline templates
+        },
+        init_options = {
+          tailwindCSS = {
+            includeLanguages = {
+              eelixir = "html",
+              eruby = "html",
+              heex = "html",
+              typescript = "html", -- Allow tailwind completions in inline Angular templates
+              typescriptreact = "html", -- Tailwind CSS support for TSX-like templates in Angular
+            },
+          },
+        },
       })
 
       setupAngular(lspconfig)

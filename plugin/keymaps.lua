@@ -39,6 +39,9 @@ set("n", "<leader>wj", "<C-w>j", { noremap = true, silent = true })
 set("n", "<leader>wk", "<C-w>k", { noremap = true, silent = true })
 set("n", "<leader>wl", "<C-w>l", { noremap = true, silent = true })
 
+set("n", "<C-h>", "<C-w>h", { noremap = true, silent = true })
+set("n", "<C-l>", "<C-w>l", { noremap = true, silent = true })
+
 set("n", "<C-=>", ":vertical resize +5<CR>", { noremap = true, silent = true })
 set("n", "<C-_>", ":vertical resize -5<CR>", { noremap = true, silent = true })
 

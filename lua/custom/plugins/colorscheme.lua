@@ -4,17 +4,16 @@ return {
   opts = {
     style = "dark",
     group_overrides = {
-      ["Normal"] = { bg = "#151515" },
+      ["Normal"] = { bg = "#101010" },
       ["NormalFloat"] = { bg = "#252525" },
-      ["SignColumn"] = { bg = "#151515" },
-      ["VertSplit"] = { bg = "#151515" },
-      ["StatusLine"] = { bg = "#151515" },
-      ["WinSeparator"] = { bg = "#151515" },
-      ["LineNr"] = { bg = "#151515", fg = "#555555" },
-      ["CursorLineNr"] = { bg = "#151515", fg = "#ffffff" },
+      ["SignColumn"] = { bg = "#101010" },
+      ["VertSplit"] = { bg = "#101010" },
+      ["StatusLine"] = { bg = "#101010" },
+      ["WinSeparator"] = { bg = "#101010" },
+      ["LineNr"] = { bg = "#101010", fg = "#555555" },
+      ["CursorLineNr"] = { bg = "#101010", fg = "#ffffff" },
 
-      -- Variables
-      ["@variable"] = { fg = "#bdbdbd" },
+      -- Variables ["@variable"] = { fg = "#bdbdbd" },
       ["@variable.c_sharp"] = { link = "@variable" },
       ["@variable.member.c_sharp"] = { fg = "#65c3cc" },
       ["@variable.parameter"] = { fg = "#ed8796" },
@@ -53,8 +52,8 @@ return {
       ["@comment"] = { fg = "#85c46c", italic = true },
 
       -- Nvim tree
-      ["NvimTreeNormal"] = { bg = "#151515" },
-      ["NvimTreeNormalNC"] = { bg = "#151515" },
+      ["NvimTreeNormal"] = { bg = "#101010" },
+      ["NvimTreeNormalNC"] = { bg = "#101010" },
     },
   },
   config = function(_, opts)

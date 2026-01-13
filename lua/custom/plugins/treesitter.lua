@@ -17,7 +17,7 @@ return {
   end,
   config = function()
     require("nvim-treesitter.configs").setup({
-      ensure_installed = { "javascript", "lua", "angular" },
+      ensure_installed = { "javascript", "lua", "angular", "html", "css", "javascript", "typescript" },
       highlight = {
         enable = true,
       }
