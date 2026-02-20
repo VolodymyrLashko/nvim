@@ -1,17 +1,20 @@
+local bgColor = "#090909";
+
 return {
   "Mofiqul/vscode.nvim",
   lazy = false,
   opts = {
     style = "dark",
     group_overrides = {
-      ["Normal"] = { bg = "#101010" },
-      ["NormalFloat"] = { bg = "#252525" },
-      ["SignColumn"] = { bg = "#101010" },
-      ["VertSplit"] = { bg = "#101010" },
-      ["StatusLine"] = { bg = "#101010" },
-      ["WinSeparator"] = { bg = "#101010" },
-      ["LineNr"] = { bg = "#101010", fg = "#555555" },
-      ["CursorLineNr"] = { bg = "#101010", fg = "#ffffff" },
+
+      ["Normal"] = { bg = bgColor },
+      ["NormalFloat"] = { bg = bgColor },
+      ["SignColumn"] = { bg = bgColor },
+      ["VertSplit"] = { bg = bgColor },
+      ["StatusLine"] = { bg = bgColor },
+      ["WinSeparator"] = { bg = bgColor },
+      ["LineNr"] = { bg = bgColor, fg = "#555555" },
+      ["CursorLineNr"] = { bg = bgColor, fg = "#ffffff" },
 
       -- Variables ["@variable"] = { fg = "#bdbdbd" },
       ["@variable.c_sharp"] = { link = "@variable" },
@@ -52,8 +55,8 @@ return {
       ["@comment"] = { fg = "#85c46c", italic = true },
 
       -- Nvim tree
-      ["NvimTreeNormal"] = { bg = "#101010" },
-      ["NvimTreeNormalNC"] = { bg = "#101010" },
+      ["NvimTreeNormal"] = { bg = bgColor },
+      ["NvimTreeNormalNC"] = { bg = bgColor },
     },
   },
   config = function(_, opts)
